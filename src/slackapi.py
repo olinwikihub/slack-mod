@@ -20,7 +20,6 @@ def delete_message(message):
     return post
 
 
-
 def args(orig, tups = dict()):
     orig += "?token=" + config.token + "&"
     for key,entry in tups.items():

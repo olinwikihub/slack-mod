@@ -10,11 +10,14 @@ class Channel:
 
     def get_messages(self):
         self.messages = [Message(json, self.id) for json in api.get_messages(self) if "subtype" in json]
+        return self
 
     def filter(self):
+        print "Filtering channel: ", self.name, "id", self.id
         for message in self.messages:
             if message.subtype in ["channel_join", "channel_leave"] and message.subtype != "message_deleted":
                 message.delete()
+        return self
 
 
 
